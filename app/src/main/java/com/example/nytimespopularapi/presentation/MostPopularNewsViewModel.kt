@@ -1,20 +1,27 @@
 package com.example.nytimespopularapi.presentation
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.nytimespopularapi.R
 import com.example.nytimespopularapi.data.datasource.NewsDataSource
 import com.example.nytimespopularapi.model.MostPopularNewsApiResponse
 import com.example.nytimespopularapi.utils.Resource
+import com.example.nytimespopularapi.utils.isInternetAvailable
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MostPopularNewsViewModel @Inject constructor(val dataSource: NewsDataSource) : ViewModel() {
+class MostPopularNewsViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
+    val dataSource: NewsDataSource
+) : ViewModel() {
     private val _newsList: MutableLiveData<Resource<List<MostPopularNewsApiResponse.Result?>>> =
         MutableLiveData()
     val newsList: LiveData<Resource<List<MostPopularNewsApiResponse.Result?>>>
@@ -42,6 +49,10 @@ class MostPopularNewsViewModel @Inject constructor(val dataSource: NewsDataSourc
     }
 
     init {
-        getMostPopularNews()
+        if (context.isInternetAvailable()) {
+            getMostPopularNews()
+        } else {
+            _newsList.postValue(Resource.Error(context.getString(R.string.no_network_available)))
+        }
     }
 }

@@ -13,6 +13,7 @@ import com.example.nytimespopularapi.model.MostPopularNewsApiResponse
 import com.example.nytimespopularapi.presentation.adapter.MostPopularNewsAdapter
 import com.example.nytimespopularapi.utils.Resource
 import com.example.nytimespopularapi.utils.gone
+import com.example.nytimespopularapi.utils.showToast
 import com.example.nytimespopularapi.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -47,7 +48,7 @@ class MostPopularNewsFragment : Fragment(R.layout.fragment_most_popular_news) {
                 }
                 is Resource.Error -> {
                     binding.pbLoading.gone()
-
+                    showToast(it.error?:"")
                 }
             }
         }
