@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
 interface NewsDataSource {
-    suspend fun getPopularNews(apiKey:String): Response<MostPopularNewsApiResponse>
+    suspend fun getPopularNews(): Response<MostPopularNewsApiResponse>
 }

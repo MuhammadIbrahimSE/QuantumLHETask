@@ -7,5 +7,5 @@ import retrofit2.http.Query
 
 interface NewsService {
     @GET("svc/mostpopular/v2/mostviewed/all-sections/7.json")
-    suspend fun getMostPopular(@Query("api-key") api_key: String): Response<MostPopularNewsApiResponse>
+    suspend fun getMostPopularNews(): Response<MostPopularNewsApiResponse>
 }
