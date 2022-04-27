@@ -14,8 +14,9 @@ import com.example.nytimespopularapi.presentation.adapter.MostPopularNewsAdapter
 import com.example.nytimespopularapi.utils.Resource
 import com.example.nytimespopularapi.utils.gone
 import com.example.nytimespopularapi.utils.visible
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MostPopularNewsFragment : Fragment(R.layout.fragment_most_popular_news) {
 
     private var _binding: FragmentMostPopularNewsBinding? = null
