@@ -28,6 +28,9 @@ class MostPopularNewsAdapter(
 
         holder.binding.apply {
             model = dataItem
+            dataItem.media?.let {
+                metadata = dataItem.media!!.get(0)?.mediaMetadata!![0]
+            }
             this.root.setOnClickListener {
                 clickCallBack(dataItem, position)
             }

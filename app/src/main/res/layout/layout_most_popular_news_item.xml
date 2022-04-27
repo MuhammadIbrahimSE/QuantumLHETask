@@ -7,20 +7,50 @@
         <variable
             name="model"
             type="com.example.nytimespopularapi.model.MostPopularNewsApiResponse.Result" />
+
+        <variable
+            name="metadata"
+            type="com.example.nytimespopularapi.model.MostPopularNewsApiResponse.Result.Media.MediaMetadata" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <ImageView
+            android:id="@+id/iv_picture"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:srcImage="@{metadata.url}"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.2" />
 
         <TextView
             android:id="@+id/tv_heading"
             android:layout_width="0dp"
-            android:layout_margin="10dp"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="@{model.title}"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_picture"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_details"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            android:text="@{model.adxKeywords}"
+            app:layout_constraintBottom_toBottomOf="@id/iv_picture"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_picture"
+            app:layout_constraintTop_toBottomOf="@+id/tv_heading" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
