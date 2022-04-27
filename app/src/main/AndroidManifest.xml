@@ -11,7 +11,7 @@
         android:name=".MyApplication"
         android:theme="@style/Theme.NYTimesPopularApi">
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

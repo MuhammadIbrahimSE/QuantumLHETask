@@ -34,17 +34,26 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    dataBinding {
+        enabled = true
+    }
+    viewBinding{
+        enabled=true
+    }
 }
 
 dependencies {
+
     def lifecycle_version = "2.5.0-alpha02"
     def logging_interceptor_version = "4.9.0"
     def coroutines_version = "1.5.2"
-    def glide_version = "4.13.0"
     def retrofit_version = "2.9.0"
     def gson_verion = "2.8.7"
     def hilt_version = "2.38.1"
-    def dimensions_version = "1.0.6"
+    def fragment_version = "1.4.1"
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
@@ -70,13 +79,7 @@ dependencies {
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
 
-    //Glide
-    implementation("com.github.bumptech.glide:glide:$glide_version")
-    annotationProcessor("com.github.bumptech.glide:compiler:$glide_version")
 
-    // Dimensions
-    implementation("com.intuit.sdp:sdp-android:$dimensions_version")
-    implementation("com.intuit.ssp:ssp-android:$dimensions_version")
 
     //Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version")
@@ -91,6 +94,7 @@ dependencies {
     implementation("com.google.code.gson:gson:$gson_verion")
 
     implementation "androidx.activity:activity-ktx:1.4.0"
+    implementation("androidx.fragment:fragment-ktx:$fragment_version")
 
 
 }
